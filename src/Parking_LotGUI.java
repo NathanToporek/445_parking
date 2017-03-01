@@ -16,14 +16,13 @@ import javax.swing.table.TableModel;
  * @author mmuppa
  *
  */
-public class MovieGUI extends JFrame implements ActionListener, TableModelListener
+public class Parking_LotGUI extends JFrame implements ActionListener, TableModelListener
 {
 	
 	private static final long serialVersionUID = 1779520078061383929L;
 	private JButton btnList, btnSearch, btnAdd;
 	private JPanel pnlButtons, pnlContent;
-	private MovieDB db;
-	private List<Movie> list;
+	private List<Parking_Lot> list;
 	private String[] columnNames = {"Title",
             "Year",
             "Length",
@@ -47,31 +46,33 @@ public class MovieGUI extends JFrame implements ActionListener, TableModelListen
 	/**
 	 * Creates the frame and components and launches the GUI.
 	 */
-	public MovieGUI() {
-		super("Movie Store");
+	public Parking_LotGUI() {
+		super("Parking Lot");
 		
-		db = new MovieDB();
-		try
-		{
-			list = db.getMovies();
-			
-			data = new Object[list.size()][columnNames.length];
-			for (int i=0; i<list.size(); i++) {
-				data[i][0] = list.get(i).getTitle();
-				data[i][1] = list.get(i).getYear();
-				data[i][2] = list.get(i).getLength();
-				data[i][3] = list.get(i).getGenre();
-				data[i][4] = list.get(i).getStudioName();
-				
-			}
-			
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
+//		db = new MovieDB();
+//		try
+//		{
+//			list = db.getMovies();
+//			
+//			data = new Object[list.size()][columnNames.length];
+//			for (int i=0; i<list.size(); i++) {
+//				data[i][0] = list.get(i).getTitle();
+//				data[i][1] = list.get(i).getYear();
+//				data[i][2] = list.get(i).getLength();
+//				data[i][3] = list.get(i).getGenre();
+//				data[i][4] = list.get(i).getStudioName();
+//				
+//			}
+//			
+//		} catch (SQLException e)
+//		{
+//			e.printStackTrace();
+//		}
 		createComponents();
 		setVisible(true);
 		setSize(500, 500);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
 	/**
@@ -140,9 +141,8 @@ public class MovieGUI extends JFrame implements ActionListener, TableModelListen
 	 */
 	public static void main(String[] args)
 	{
-		MovieGUI movieGUI = new MovieGUI();
-		movieGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		Parking_LotGUI movieGUI = new Parking_LotGUI();
+		
 	}
 
 	/**
@@ -151,69 +151,69 @@ public class MovieGUI extends JFrame implements ActionListener, TableModelListen
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnList) {
-			try {
-				list = db.getMovies();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			data = new Object[list.size()][columnNames.length];
-			for (int i=0; i<list.size(); i++) {
-				data[i][0] = list.get(i).getTitle();
-				data[i][1] = list.get(i).getYear();
-				data[i][2] = list.get(i).getLength();
-				data[i][3] = list.get(i).getGenre();
-				data[i][4] = list.get(i).getStudioName();
-			}
-			pnlContent.removeAll();
-			table = new JTable(data, columnNames);
-			table.getModel().addTableModelListener(this);
-			scrollPane = new JScrollPane(table);
-			pnlContent.add(scrollPane);
-			pnlContent.revalidate();
-			this.repaint();
-			
-		} else if (e.getSource() == btnSearch) {
-			pnlContent.removeAll();
-			pnlContent.add(pnlSearch);
-			pnlContent.revalidate();
-			this.repaint();
-		} else if (e.getSource() == btnAdd) {
-			pnlContent.removeAll();
-			pnlContent.add(pnlAdd);
-			pnlContent.revalidate();
-			this.repaint();
-			
-		} else if (e.getSource() == btnTitleSearch) {
-			String title = txfTitle.getText();
-			if (title.length() > 0) {
-				list = db.getMovies(title);
-				data = new Object[list.size()][columnNames.length];
-				for (int i=0; i<list.size(); i++) {
-					data[i][0] = list.get(i).getTitle();
-					data[i][1] = list.get(i).getYear();
-					data[i][2] = list.get(i).getLength();
-					data[i][3] = list.get(i).getGenre();
-					data[i][4] = list.get(i).getStudioName();
-				}
-				pnlContent.removeAll();
-				table = new JTable(data, columnNames);
-				table.getModel().addTableModelListener(this);
-				scrollPane = new JScrollPane(table);
-				pnlContent.add(scrollPane);
-				pnlContent.revalidate();
-				this.repaint();
-			}
-		} else if (e.getSource() == btnAddMovie) {
-			Movie movie = new Movie(txfField[0].getText(), Integer.parseInt(txfField[1].getText())
-					,Integer.parseInt(txfField[2].getText()), txfField[3].getText(), txfField[4].getText() );
-			db.addMovie(movie);
-			JOptionPane.showMessageDialog(null, "Added Successfully!");
-			for (int i=0; i<txfField.length; i++) {
-				txfField[i].setText("");
-			}
-		}
+//		if (e.getSource() == btnList) {
+//			try {
+//				list = db.getMovies();
+//			} catch (SQLException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+//			data = new Object[list.size()][columnNames.length];
+//			for (int i=0; i<list.size(); i++) {
+//				data[i][0] = list.get(i).getLotName();
+//				data[i][1] = list.get(i).getLocation();
+//				data[i][2] = list.get(i).getCapacity();
+//				data[i][3] = list.get(i).getFloors();
+//				data[i][4] = list.get(i).getMonthlyRate();
+//			}
+//			pnlContent.removeAll();
+//			table = new JTable(data, columnNames);
+//			table.getModel().addTableModelListener(this);
+//			scrollPane = new JScrollPane(table);
+//			pnlContent.add(scrollPane);
+//			pnlContent.revalidate();
+//			this.repaint();
+//			
+//		} else if (e.getSource() == btnSearch) {
+//			pnlContent.removeAll();
+//			pnlContent.add(pnlSearch);
+//			pnlContent.revalidate();
+//			this.repaint();
+//		} else if (e.getSource() == btnAdd) {
+//			pnlContent.removeAll();
+//			pnlContent.add(pnlAdd);
+//			pnlContent.revalidate();
+//			this.repaint();
+//			
+//		} else if (e.getSource() == btnTitleSearch) {
+//			String title = txfTitle.getText();
+//			if (title.length() > 0) {
+//				list = db.getMovies(title);
+//				data = new Object[list.size()][columnNames.length];
+//				for (int i=0; i<list.size(); i++) {
+//					data[i][0] = list.get(i).getLotName();
+//					data[i][1] = list.get(i).getLocation();
+//					data[i][2] = list.get(i).getCapacity();
+//					data[i][3] = list.get(i).getFloors();
+//					data[i][4] = list.get(i).getMonthlyRate();
+//				}
+//				pnlContent.removeAll();
+//				table = new JTable(data, columnNames);
+//				table.getModel().addTableModelListener(this);
+//				scrollPane = new JScrollPane(table);
+//				pnlContent.add(scrollPane);
+//				pnlContent.revalidate();
+//				this.repaint();
+//			}
+//		} else if (e.getSource() == btnAddMovie) {
+//			Parking_Lot movie = new Parking_Lot(txfField[0].getText(), txfField[1].getText()
+//					,Integer.parseInt(txfField[2].getText()), Integer.parseInt(txfField[3].getText()), Float.parseFloat(txfField[4].getText()));
+//			db.addMovie(movie);
+//			JOptionPane.showMessageDialog(null, "Added Successfully!");
+//			for (int i=0; i<txfField.length; i++) {
+//				txfField[i].setText("");
+//			}
+//		}
 		
 	}
 
@@ -228,7 +228,7 @@ public class MovieGUI extends JFrame implements ActionListener, TableModelListen
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
         
-        db.updateMovie(row, columnName, data);
+        //db.updateMovie(row, columnName, data);
 		
 	}
 
