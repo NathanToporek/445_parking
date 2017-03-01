@@ -101,10 +101,10 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		
 		//List Panel
 		pnlContent = new JPanel();
-		table = new JTable(data, columnNames);
+		//table = new JTable(data, columnNames);
 		scrollPane = new JScrollPane(table);
 		pnlContent.add(scrollPane);
-		table.getModel().addTableModelListener(this);
+		//table.getModel().addTableModelListener(this);
 		
 		//Search Panel
 		pnlSearch = new JPanel();
@@ -142,7 +142,7 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	/**
 	 * @param args
 	 */
-	public static void NOTmain(String[] args)
+	public static void main(String[] args)
 	{
 		Parking_LotGUI movieGUI = new Parking_LotGUI();
 		
@@ -154,69 +154,69 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == btnList) {
+		if (e.getSource() == btnList) {
 //			try {
 //				list = db.getMovies();
 //			} catch (SQLException e1) {
 //				// TODO Auto-generated catch block
 //				e1.printStackTrace();
 //			}
-//			data = new Object[list.size()][columnNames.length];
-//			for (int i=0; i<list.size(); i++) {
-//				data[i][0] = list.get(i).getLotName();
-//				data[i][1] = list.get(i).getLocation();
-//				data[i][2] = list.get(i).getCapacity();
-//				data[i][3] = list.get(i).getFloors();
-//				data[i][4] = list.get(i).getMonthlyRate();
-//			}
-//			pnlContent.removeAll();
-//			table = new JTable(data, columnNames);
-//			table.getModel().addTableModelListener(this);
-//			scrollPane = new JScrollPane(table);
-//			pnlContent.add(scrollPane);
-//			pnlContent.revalidate();
-//			this.repaint();
-//			
-//		} else if (e.getSource() == btnSearch) {
-//			pnlContent.removeAll();
-//			pnlContent.add(pnlSearch);
-//			pnlContent.revalidate();
-//			this.repaint();
-//		} else if (e.getSource() == btnAdd) {
-//			pnlContent.removeAll();
-//			pnlContent.add(pnlAdd);
-//			pnlContent.revalidate();
-//			this.repaint();
-//			
-//		} else if (e.getSource() == btnTitleSearch) {
-//			String title = txfTitle.getText();
-//			if (title.length() > 0) {
-//				list = db.getMovies(title);
-//				data = new Object[list.size()][columnNames.length];
-//				for (int i=0; i<list.size(); i++) {
-//					data[i][0] = list.get(i).getLotName();
-//					data[i][1] = list.get(i).getLocation();
-//					data[i][2] = list.get(i).getCapacity();
-//					data[i][3] = list.get(i).getFloors();
-//					data[i][4] = list.get(i).getMonthlyRate();
-//				}
-//				pnlContent.removeAll();
-//				table = new JTable(data, columnNames);
-//				table.getModel().addTableModelListener(this);
-//				scrollPane = new JScrollPane(table);
-//				pnlContent.add(scrollPane);
-//				pnlContent.revalidate();
-//				this.repaint();
-//			}
-//		} else if (e.getSource() == btnAddMovie) {
-//			Parking_Lot movie = new Parking_Lot(txfField[0].getText(), txfField[1].getText()
-//					,Integer.parseInt(txfField[2].getText()), Integer.parseInt(txfField[3].getText()), Float.parseFloat(txfField[4].getText()));
-//			db.addMovie(movie);
-//			JOptionPane.showMessageDialog(null, "Added Successfully!");
-//			for (int i=0; i<txfField.length; i++) {
-//				txfField[i].setText("");
-//			}
-//		}
+			data = new Object[list.size()][columnNames.length];
+			for (int i=0; i<list.size(); i++) {
+				data[i][0] = list.get(i).getLotName();
+				data[i][1] = list.get(i).getLocation();
+				data[i][2] = list.get(i).getCapacity();
+				data[i][3] = list.get(i).getFloors();
+				data[i][4] = list.get(i).getMonthlyRate();
+			}
+			pnlContent.removeAll();
+			table = new JTable(data, columnNames);
+			table.getModel().addTableModelListener(this);
+			scrollPane = new JScrollPane(table);
+			pnlContent.add(scrollPane);
+			pnlContent.revalidate();
+			this.repaint();
+
+		} else if (e.getSource() == btnSearch) {
+			pnlContent.removeAll();
+			pnlContent.add(pnlSearch);
+			pnlContent.revalidate();
+			this.repaint();
+		} else if (e.getSource() == btnAdd) {
+			pnlContent.removeAll();
+			pnlContent.add(pnlAdd);
+			pnlContent.revalidate();
+			this.repaint();
+
+		} else if (e.getSource() == btnTitleSearch) {
+			String title = txfTitle.getText();
+			if (title.length() > 0) {
+				//list = db.getMovies(title);
+				data = new Object[list.size()][columnNames.length];
+				for (int i=0; i<list.size(); i++) {
+					data[i][0] = list.get(i).getLotName();
+					data[i][1] = list.get(i).getLocation();
+					data[i][2] = list.get(i).getCapacity();
+					data[i][3] = list.get(i).getFloors();
+					data[i][4] = list.get(i).getMonthlyRate();
+				}
+				pnlContent.removeAll();
+				table = new JTable(data, columnNames);
+				table.getModel().addTableModelListener(this);
+				scrollPane = new JScrollPane(table);
+				pnlContent.add(scrollPane);
+				pnlContent.revalidate();
+				this.repaint();
+			}
+		} else if (e.getSource() == btnAddMovie) {
+			Parking_Lot movie = new Parking_Lot(txfField[0].getText(), txfField[1].getText()
+					,Integer.parseInt(txfField[2].getText()), Integer.parseInt(txfField[3].getText()), Float.parseFloat(txfField[4].getText()));
+			//db.addMovie(movie);
+			JOptionPane.showMessageDialog(null, "Added Successfully!");
+			for (int i=0; i<txfField.length; i++) {
+				txfField[i].setText("");
+			}
+		}
 		
 	}
 
