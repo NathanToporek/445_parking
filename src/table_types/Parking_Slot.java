@@ -29,7 +29,7 @@ public class Parking_Slot {
 	 * @param monthlyRate
 	 */
 	public Parking_Slot(int slotNo, String parkingLotName, boolean isCovered, float monthlyRate) {
-		super();
+//		super();
 		this.slotNo = slotNo;
 		this.parkingLotName = parkingLotName;
 		this.isCovered = isCovered;

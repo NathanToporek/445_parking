@@ -1,5 +1,7 @@
 package table_types;
 
+import java.sql.Date;
+
 /**
  * @author azoni
  *
@@ -8,9 +10,10 @@ public class Space_Booking {
 	
 	private int bookingId;
 	private String visitorLisence;
-	private String dateOfVisit;
+	private Date dateOfVisit;
 	private int staffId;
-	private int parkingLotNo;
+	private int parkingSlotNo;
+	private String lotName;
 	/**
 	 * @param bookingId
 	 * @param visitorLisence
@@ -18,13 +21,14 @@ public class Space_Booking {
 	 * @param staffId
 	 * @param parkingLotNo
 	 */
-	public Space_Booking(int bookingId, String visitorLisence, String dateOfVisit, int staffId, int parkingLotNo) {
+	public Space_Booking(int bookingId, String visitorLisence, Date dateOfVisit, int staffId, int parkingSlotNo, String lotName) {
 		super();
 		this.bookingId = bookingId;
 		this.visitorLisence = visitorLisence;
 		this.dateOfVisit = dateOfVisit;
 		this.staffId = staffId;
-		this.parkingLotNo = parkingLotNo;
+		this.parkingSlotNo = parkingSlotNo;
+		this.lotName = lotName;
 	}
 	/**
 	 * @return the bookingId
@@ -53,13 +57,13 @@ public class Space_Booking {
 	/**
 	 * @return the dateOfVisit
 	 */
-	public String getDateOfVisit() {
+	public Date getDateOfVisit() {
 		return dateOfVisit;
 	}
 	/**
 	 * @param dateOfVisit the dateOfVisit to set
 	 */
-	public void setDateOfVisit(String dateOfVisit) {
+	public void setDateOfVisit(Date dateOfVisit) {
 		this.dateOfVisit = dateOfVisit;
 	}
 	/**
@@ -77,13 +81,19 @@ public class Space_Booking {
 	/**
 	 * @return the parkingLotNo
 	 */
-	public int getParkingLotNo() {
-		return parkingLotNo;
+	public int getParkingSlotNo() {
+		return parkingSlotNo;
 	}
 	/**
 	 * @param parkingLotNo the parkingLotNo to set
 	 */
-	public void setParkingLotNo(int parkingLotNo) {
-		this.parkingLotNo = parkingLotNo;
+	public void setParkingSlotNo(int parkingLotNo) {
+		this.parkingSlotNo = parkingLotNo;
+	}
+	public void setLotName(String lotname) {
+		this.lotName = lotname;
+	}
+	public String getLotName() {
+		return lotName;
 	}
 }

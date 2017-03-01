@@ -142,7 +142,7 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args)
+	public static void NOTmain(String[] args)
 	{
 		Parking_LotGUI movieGUI = new Parking_LotGUI();
 		

@@ -18,7 +18,7 @@ CREATE TABLE STAFF (
 	Staff_ID		INT		NOT NULL,
 	Staff_Name		VARCHAR(50)	NOT NULL,
 	Phone_Extension		INT		NOT NULL,
-	License_Plate_No	INT		NOT NULL,
+	License_Plate_No	VARCHAR(12)	NOT NULL,
 	PRIMARY KEY(Staff_ID)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE STAFF_SPACE (
 
 CREATE TABLE SPACE_BOOKING (
 	Booking_ID	INT		NOT NULL,
-	Visitor_License	INT		NOT NULL,
+	Visitor_License	VARCHAR(12)		NOT NULL,
 	Date_of_Visit	DATE		NOT NULL,
 	Staff_ID	INT		NOT NULL,
 	Slot_No		INT		NOT NULL,

@@ -11,15 +11,17 @@ public class Staff_Space {
 	
 	private int staffId;
 	private int parkingSlotNo;
+	private String lotName;
 	
 	/**
 	 * @param staffId
 	 * @param parkingSlotNo
 	 */
-	public Staff_Space(int staffId, int parkingSlotNo) {
+	public Staff_Space(int staffId, int parkingSlotNo, String lotName) {
 		super();
 		this.staffId = staffId;
 		this.parkingSlotNo = parkingSlotNo;
+		this.lotName = lotName;
 	}
 	/**
 	 * @return the staffId
@@ -44,5 +46,11 @@ public class Staff_Space {
 	 */
 	public void setParkingSlotNo(int parkingSlotNo) {
 		this.parkingSlotNo = parkingSlotNo;
+	}
+	public String getLotName() {
+		return lotName;
+	}
+	public void setLotName(String name) {
+		this.lotName = name;
 	}
 }
