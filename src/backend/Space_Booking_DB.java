@@ -73,7 +73,7 @@ public class Space_Booking_DB extends BasicDB {
 			create_connection();
 		}
 		String quer = "INSERT INTO " + username + ".SPACE_BOOKING "
-					+ "VALUES (?, ?, ?, ?, ?, ?, NULL);";
+					+ "VALUES (?, ?, ?, ?, ?, ?);";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(quer);

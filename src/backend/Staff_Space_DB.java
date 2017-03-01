@@ -101,7 +101,7 @@ public class Staff_Space_DB extends BasicDB {
 			create_connection();
 		}
 		String quer = "INSERT INTO " + username + ".STAFF_SPACE VALUES " 
-					+ "(?, ?, ?, NULL);";
+					+ "(?, ?, ?);";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(quer);
