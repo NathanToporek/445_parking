@@ -2,8 +2,9 @@ package table_types;
 
 
 /**
- * @author azoni
- *
+ * Class to handle a single row from the STAFF relation in our database.
+ * @author Charlton Smith, Nathanael Toporek
+ * @version 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
  */
 public class Staff {
 	
@@ -11,14 +12,28 @@ public class Staff {
 	private int phoneExt;
 	private String name;
 	private String lisencePlateNo;
+
 	/**
-	 * @param staffId
-	 * @param phoneExt
-	 * @param name
-	 * @param lisencePlateNo
+	 * Constructor for a Staff Member.
+	 * @param staffId The ID for this staff.
+	 * @param phoneExt The phone extension for this staff.
+	 * @param name The name of this staff member.
+	 * @param lisencePlateNo The license plate number for this staff member.
+	 * @throws NullPointerException If name == null || licensePlateNo == null
+	 * @throws IllegalArgumentException If staffId < 0 || phoneExt < 0 || phoneExt > 9999
 	 */
-	public Staff(int staffId, int phoneExt, String name, String lisencePlateNo) {
-		super();
+	public Staff(int staffId, int phoneExt, String name, String lisencePlateNo)
+		throws NullPointerException, IllegalArgumentException
+	{
+		if(staffId < 0 || phoneExt < 0) {
+			throw new IllegalArgumentException("Negatives are bad.");
+		}
+		if(phoneExt > 9999) {
+			throw new IllegalArgumentException("Invalid phone extension");
+		}
+		if(name == null || lisencePlateNo == null) {
+			throw new NullPointerException("I don't like null values.");
+		}
 		this.staffId = staffId;
 		this.phoneExt = phoneExt;
 		this.name = name;
@@ -31,22 +46,10 @@ public class Staff {
 		return staffId;
 	}
 	/**
-	 * @param staffId the staffId to set
-	 */
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
-	}
-	/**
 	 * @return the phoneExt
 	 */
 	public int getPhoneExt() {
 		return phoneExt;
-	}
-	/**
-	 * @param phoneExt the phoneExt to set
-	 */
-	public void setPhoneExt(int phoneExt) {
-		this.phoneExt = phoneExt;
 	}
 	/**
 	 * @return the name
@@ -55,23 +58,11 @@ public class Staff {
 		return name;
 	}
 	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
 	 * @return the lisencePlateNo
 	 */
 	public String getLisencePlateNo() {
 		return lisencePlateNo;
 	}
-	/**
-	 * @param lisencePlateNo the lisencePlateNo to set
-	 */
-	public void setLisencePlateNo(String lisencePlateNo) {
-		this.lisencePlateNo = lisencePlateNo;
-	}
-	
+
 	
 }

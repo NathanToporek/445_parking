@@ -3,8 +3,9 @@ package table_types;
 import java.sql.Date;
 
 /**
- * @author azoni
- *
+ * Class to handle a single row from the SPACE_BOOKING relation in our database.
+ * @author Charlton Smith, Nathanael Toporek
+ * @version 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
  */
 public class Space_Booking {
 	
@@ -14,15 +15,29 @@ public class Space_Booking {
 	private int staffId;
 	private int parkingSlotNo;
 	private String lotName;
+
 	/**
-	 * @param bookingId
-	 * @param visitorLisence
-	 * @param dateOfVisit
-	 * @param staffId
-	 * @param parkingLotNo
+	 * Constructor for this Space_Booking object.
+	 * @param bookingId The booking ID for this space booking.
+	 * @param visitorLisence License plate of the visitor.
+	 * @param dateOfVisit Date of the visit.
+	 * @param staffId ID of the staff member who reserved this slot.
+	 * @param parkingSlotNo The Slot number of the slot that got reserved.
+	 * @param lotName The Name of the parking lot that this slot was reserved in.
+	 * @throws NullPointerException If visitorLicense == null
+	 * 								|| dateOfVisit == null || lotName == null
+	 * @throws IllegalArgumentException If any int is < 0
 	 */
-	public Space_Booking(int bookingId, String visitorLisence, Date dateOfVisit, int staffId, int parkingSlotNo, String lotName) {
-		super();
+	public Space_Booking(int bookingId, String visitorLisence, Date dateOfVisit,
+						 int staffId, int parkingSlotNo, String lotName)
+		throws NullPointerException, IllegalArgumentException {
+
+		if(bookingId < 0 || parkingSlotNo < 0 || staffId < 0) {
+			throw new IllegalArgumentException("I don't like negatives.");
+		}
+		if(visitorLisence == null || lotName == null || dateOfVisit == null) {
+			throw new NullPointerException("I don't like NULLs either.");
+		}
 		this.bookingId = bookingId;
 		this.visitorLisence = visitorLisence;
 		this.dateOfVisit = dateOfVisit;
@@ -37,22 +52,10 @@ public class Space_Booking {
 		return bookingId;
 	}
 	/**
-	 * @param bookingId the bookingId to set
-	 */
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
-	}
-	/**
 	 * @return the visitorLisence
 	 */
 	public String getVisitorLisence() {
 		return visitorLisence;
-	}
-	/**
-	 * @param visitorLisence the visitorLisence to set
-	 */
-	public void setVisitorLisence(String visitorLisence) {
-		this.visitorLisence = visitorLisence;
 	}
 	/**
 	 * @return the dateOfVisit
@@ -61,22 +64,10 @@ public class Space_Booking {
 		return dateOfVisit;
 	}
 	/**
-	 * @param dateOfVisit the dateOfVisit to set
-	 */
-	public void setDateOfVisit(Date dateOfVisit) {
-		this.dateOfVisit = dateOfVisit;
-	}
-	/**
 	 * @return the staffId
 	 */
 	public int getStaffId() {
 		return staffId;
-	}
-	/**
-	 * @param staffId the staffId to set
-	 */
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
 	}
 	/**
 	 * @return the parkingLotNo
@@ -85,14 +76,8 @@ public class Space_Booking {
 		return parkingSlotNo;
 	}
 	/**
-	 * @param parkingLotNo the parkingLotNo to set
+	 * @return The parking lot name.
 	 */
-	public void setParkingSlotNo(int parkingLotNo) {
-		this.parkingSlotNo = parkingLotNo;
-	}
-	public void setLotName(String lotname) {
-		this.lotName = lotname;
-	}
 	public String getLotName() {
 		return lotName;
 	}

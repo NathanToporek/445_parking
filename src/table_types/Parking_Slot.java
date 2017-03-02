@@ -1,39 +1,44 @@
 package table_types;
 
 /**
- * @author azoni
- *
+ * Class to handle information about a parking slot in our PARKING_SLOT relation.
+ * @author Charlton Smith, Nathanael Toporek
+ * @version 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
  */
 public class Parking_Slot {
 	/**
-	 * 
+	 * This slots Slot Number
 	 */
 	private int slotNo;
 	/**
-	 * 
+	 * The name of the parking lot that contains this parking slot.
 	 */
 	private String parkingLotName;
 	/**
-	 * 
+	 * Determines whether or not you pay cashmaneyz for this slot.
 	 */
 	private boolean isCovered;
-	/**
-	 * 
-	 */
-	private float monthlyRate;
-	
-	/**
-	 * @param slotNo
-	 * @param parkingLotName
-	 * @param isCovered
-	 * @param monthlyRate
-	 */
-	public Parking_Slot(int slotNo, String parkingLotName, boolean isCovered, float monthlyRate) {
-//		super();
+
+    /**
+     * Creates a new Parking_Slot object.
+     * @param slotNo The slot number.
+     * @param parkingLotName The name of the parking lot that contains this slot.
+     * @param isCovered Is the slot covered or not?
+     * @throws IllegalArgumentException If slotNo < 0
+     * @throws NullPointerException if parkingLotName == null
+     */
+	public Parking_Slot(int slotNo, String parkingLotName, boolean isCovered)
+		throws IllegalArgumentException, NullPointerException
+	{
+		if(slotNo < 0) {
+			throw new IllegalArgumentException("Slots can't have a negative ID #");
+		}
+		if(parkingLotName == null) {
+			throw new NullPointerException("Please enter an actual lot name, not just blank space. *Scoffs*");
+		}
 		this.slotNo = slotNo;
 		this.parkingLotName = parkingLotName;
 		this.isCovered = isCovered;
-		this.monthlyRate = monthlyRate;
 	}
 	/**
 	 * @return the slotNo
@@ -42,22 +47,10 @@ public class Parking_Slot {
 		return slotNo;
 	}
 	/**
-	 * @param slotNo the slotNo to set
-	 */
-	public void setSlotNo(int slotNo) {
-		this.slotNo = slotNo;
-	}
-	/**
 	 * @return the parkingLotName
 	 */
 	public String getParkingLotName() {
 		return parkingLotName;
-	}
-	/**
-	 * @param parkingLotName the parkingLotName to set
-	 */
-	public void setParkingLotName(String parkingLotName) {
-		this.parkingLotName = parkingLotName;
 	}
 	/**
 	 * @return the isCovered
@@ -65,23 +58,5 @@ public class Parking_Slot {
 	public boolean isCovered() {
 		return isCovered;
 	}
-	/**
-	 * @param isCovered the isCovered to set
-	 */
-	public void setCovered(boolean isCovered) {
-		this.isCovered = isCovered;
-	}
-	/**
-	 * @return the monthlyRate
-	 */
-	public float getMonthlyRate() {
-		return monthlyRate;
-	}
-	/**
-	 * @param monthlyRate the monthlyRate to set
-	 */
-	public void setMonthlyRate(float monthlyRate) {
-		this.monthlyRate = monthlyRate;
-	}
-	
+
 }

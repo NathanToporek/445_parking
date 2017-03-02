@@ -36,8 +36,7 @@ public class Parking_Slot_DB extends BasicDB {
 			while(r.next()) {
 				slots.add(new Parking_Slot(r.getInt("Slot_No"),
 										   r.getString("Lot_Name"),
-										   r.getBoolean("Is_Covered"),
-										   (float) 0.0));
+										   r.getBoolean("Is_Covered")));
 			}
 		} catch (SQLException e) {
 			System.out.println(e);
