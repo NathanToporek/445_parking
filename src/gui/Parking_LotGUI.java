@@ -10,6 +10,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import backend.BasicDB;
+import backend.Parking_Lot_DB;
 import table_types.Parking_Lot;
 
 /**
@@ -26,11 +28,11 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	private JButton btnList, btnSearch, btnAdd;
 	private JPanel pnlButtons, pnlContent;
 	private List<Parking_Lot> list;
-	private String[] columnNames = {"Title",
-            "Year",
-            "Length",
-            "Genre",
-            "StudioName"};
+	private String[] columnNames = {"Lot Name",
+            "Location",
+            "Capacity",
+            "Floors",
+            "Monthly Rate"};
 	
 	private Object[][] data;
 	private JTable table;
@@ -45,37 +47,38 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	private JTextField[] txfField = new JTextField[5];
 	private JButton btnAddMovie;
 	
-	
+	private Parking_Lot_DB db;
 	/**
 	 * Creates the frame and components and launches the GUI.
 	 */
 	public Parking_LotGUI() {
 		super("Parking Lot");
-		
-//		db = new MovieDB();
-//		try
-//		{
-//			list = db.getMovies();
-//			
-//			data = new Object[list.size()][columnNames.length];
-//			for (int i=0; i<list.size(); i++) {
-//				data[i][0] = list.get(i).getTitle();
-//				data[i][1] = list.get(i).getYear();
-//				data[i][2] = list.get(i).getLength();
-//				data[i][3] = list.get(i).getGenre();
-//				data[i][4] = list.get(i).getStudioName();
-//				
-//			}
-//			
-//		} catch (SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
+
+
+		db = new Parking_Lot_DB();
+		try
+		{
+			list = db.get_parking_lots();
+
+			data = new Object[list.size()][columnNames.length];
+			for (int i=0; i<list.size(); i++) {
+				data[i][0] = list.get(i).getLotName();
+				data[i][1] = list.get(i).getLocation();
+				data[i][2] = list.get(i).getCapacity();
+				data[i][3] = list.get(i).getFloors();
+				data[i][4] = list.get(i).getMonthlyRate();
+
+			}
+
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 		createComponents();
 		setVisible(true);
 		setSize(500, 500);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
     
 	/**
@@ -101,10 +104,10 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		
 		//List Panel
 		pnlContent = new JPanel();
-		//table = new JTable(data, columnNames);
+		table = new JTable(data, columnNames);
 		scrollPane = new JScrollPane(table);
 		pnlContent.add(scrollPane);
-		//table.getModel().addTableModelListener(this);
+		table.getModel().addTableModelListener(this);
 		
 		//Search Panel
 		pnlSearch = new JPanel();
@@ -145,7 +148,7 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	public static void main(String[] args)
 	{
 		Parking_LotGUI movieGUI = new Parking_LotGUI();
-		
+		movieGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/**
@@ -191,7 +194,7 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		} else if (e.getSource() == btnTitleSearch) {
 			String title = txfTitle.getText();
 			if (title.length() > 0) {
-				//list = db.getMovies(title);
+				list = db.get_parking_lots("TEST");
 				data = new Object[list.size()][columnNames.length];
 				for (int i=0; i<list.size(); i++) {
 					data[i][0] = list.get(i).getLotName();
@@ -211,7 +214,11 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		} else if (e.getSource() == btnAddMovie) {
 			Parking_Lot movie = new Parking_Lot(txfField[0].getText(), txfField[1].getText()
 					,Integer.parseInt(txfField[2].getText()), Integer.parseInt(txfField[3].getText()), Float.parseFloat(txfField[4].getText()));
-			//db.addMovie(movie);
+			try {
+				db.add_lot(movie);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			JOptionPane.showMessageDialog(null, "Added Successfully!");
 			for (int i=0; i<txfField.length; i++) {
 				txfField[i].setText("");

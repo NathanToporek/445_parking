@@ -1,8 +1,8 @@
 package table_types;
 
 /**
- * @author azoni
- *
+ * @author azoni and nat96
+ * @version 3/1/2017
  */
 public class Parking_Slot {
 	/**
