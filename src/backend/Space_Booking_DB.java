@@ -1,9 +1,7 @@
 package backend;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
 
 import table_types.Space_Booking;
@@ -55,6 +53,51 @@ public class Space_Booking_DB extends BasicDB {
 		
 		for(Space_Booking booking : all) {
 			if(booking.getStaffId() == id) {
+				filtered.add(booking);
+			}
+		}
+		return filtered;
+	}
+
+	/**
+	 * Returns A list of bookings containing only bookings that are in the specified lot.
+	 * @param lotName The lot name we're looking for bookings in.
+	 * @return A list of all bookings in the specified lot.
+	 * @throws SQLException If reasons.
+	 */
+	public static ArrayList<Space_Booking> by_lot_name(String lotName) throws SQLException {
+		ArrayList<Space_Booking> all = get_bookings();
+		ArrayList<Space_Booking> filtered = new ArrayList<Space_Booking>();
+
+		for(Space_Booking booking : all) {
+			if(booking.getLotName().compareToIgnoreCase(lotName) == 0) {
+				filtered.add(booking);
+			}
+		}
+		return filtered;
+	}
+
+	/**
+	 * Returns a list of (hopefully) size 1 that contains all space bookings for a slot for
+	 * today
+	 * @param lotName The lot we're looking in.
+	 * @param slotNo The Slot number we're looking for.
+	 * @param staffID The ID of the staff member who reserved this slot.
+	 * @return a list of (hopefully) size 1 that contains all space bookings for a slot for today
+	 * @throws SQLException if raisins
+	 */
+	public static ArrayList<Space_Booking> by_foreign_keys_and_todays_date(String lotName, int slotNo, int staffID)
+		throws SQLException
+	{
+		ArrayList<Space_Booking> all = get_bookings();
+		ArrayList<Space_Booking> filtered = new ArrayList<Space_Booking>();
+
+		for(Space_Booking booking : all) {
+			if(booking.getLotName().compareToIgnoreCase(lotName) == 0 &&
+					booking.getParkingSlotNo() == slotNo &&
+					booking.getStaffId() == staffID &&
+					booking.getDateOfVisit().toString().equals(new Date(Instant.now().toEpochMilli()).toString()))
+			{
 				filtered.add(booking);
 			}
 		}

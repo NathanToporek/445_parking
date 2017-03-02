@@ -19,7 +19,7 @@ public class Parking_Lot {
 	 * @param floors The number of floors of this lot
 	 * @param monthlyRate The monthly rate for this lot.
 	 * @throws NullPointerException If lotName == null || location == null
-	 * @throws IllegalArgumentException If capacity < 0 || floors < 0 || monthlyRate < 0
+	 * @throws IllegalArgumentException If capacity <= 0 || floors < 0 || monthlyRate < 0
 	 */
 	public Parking_Lot(String lotName, String location, int capacity, int floors, float monthlyRate)
 		throws NullPointerException, IllegalArgumentException
@@ -29,6 +29,9 @@ public class Parking_Lot {
 		}
 		if(capacity < 0 || floors < 0 || monthlyRate <= 0) {
 			throw new IllegalArgumentException("Negative Values aren't cool, yo.");
+		}
+		if(capacity == 0) {
+			throw new IllegalArgumentException("YOU CAN'T HAVE AN EMPTY LOT.");
 		}
 		this.lotName = lotName;
 		this.location = location;

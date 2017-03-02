@@ -48,12 +48,37 @@ public class Parking_Slot_DB extends BasicDB {
 		
 		return slots;
 	}
+
+	/**
+	 * Returns a list of (hopefully) size 1 that has a slot matching the passed lot_name and
+	 * slot_no
+	 * @param lot_name The name of the parking lot we're looking in
+	 * @param slot_no The number of the slot we're looking for.
+	 * @return The slot we're looking for.
+	 */
+	public static ArrayList<Parking_Slot> by_primary_key(String lot_name, int slot_no) {
+		ArrayList<Parking_Slot> unfiltered = null;
+		try {
+			unfiltered = get_parking_slots();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ArrayList<Parking_Slot> filtered = new ArrayList<Parking_Slot>();
+		for(Parking_Slot slot : unfiltered) {
+			if(slot.getParkingLotName().compareToIgnoreCase(lot_name) == 0
+					&& slot.getSlotNo() == slot_no)
+			{
+				filtered.add(slot);
+			}
+		}
+		return filtered;
+	}
 	/**
 	 * Returns all of the parking slots that have the same lot_name as you requested.
 	 * @param lot_name The parking lot name we want to filter by.
 	 * @return All slots in the lot you request.
 	 */
-	public static ArrayList<Parking_Slot> slots_by_lot_name(String lot_name) {
+	public static ArrayList<Parking_Slot> by_lot_name(String lot_name) {
 		ArrayList<Parking_Slot> unfiltered = null;
 		try {
 			unfiltered = get_parking_slots();

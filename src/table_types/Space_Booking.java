@@ -81,4 +81,26 @@ public class Space_Booking {
 	public String getLotName() {
 		return lotName;
 	}
+
+	/**
+	 * Normal .equals override.
+	 * @param other Another object.
+	 * @return True if all fields match, false otherwise.
+	 */
+	@Override
+	public boolean equals (Object other) {
+		if(other.getClass() == this.getClass()) {
+			Space_Booking s = (Space_Booking) other;
+			if(this.bookingId == s.bookingId &&
+			   this.dateOfVisit.equals(s.dateOfVisit) &&
+			   this.staffId == s.staffId &&
+			   this.visitorLisence.equals(s.getVisitorLisence()) &&
+			   this.parkingSlotNo == s.parkingSlotNo &&
+			   this.lotName.equals(s.lotName))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }
