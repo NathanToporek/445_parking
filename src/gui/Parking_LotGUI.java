@@ -28,23 +28,59 @@ import table_types.Staff;
  */
 public class Parking_LotGUI extends JFrame implements ActionListener, TableModelListener
 {
-	
+	/**
+	 * Serial Version
+	 */
 	private static final long serialVersionUID = 1779520078061383929L;
-	private JButton btnList, btnBookingList, btnSearch, btnAdd, btnAddStaff, btnUpdate, btnAddStaffConfirm, btnUpdateStaff;
+	/**
+	 * Button variables for functionality.
+	 */
+	private JButton btnList, btnBookingList, btnSearch, btnAdd,
+			btnAddStaff, btnUpdate, btnAddStaffConfirm, btnUpdateStaff;
+	/**
+	 * Panel containing buttons.
+	 * Main panel for frame.
+	 */
 	private JPanel pnlButtons, pnlContent;
+	/**
+	 *List to store Parking lot objects.
+	 */
 	private List<Parking_Lot> list;
+	/**
+	 * List to store Booking objects.
+	 */
 	private List<Space_Booking> reserveList;
+	/**
+	 * List to store Staff objects.
+	 */
 	private List<Staff> staffList;
+	/**
+	 * Array for column table names for parking lots
+	 */
 	private String[] columnNames = {"Lot Name",
             "Location",
             "Capacity",
             "Floors",
             "Monthly Rate"};
-	
+	/**
+	 *
+	 */
 	private Object[][] data;
+	/**
+	 *
+	 */
 	private JTable table;
+	/**
+	 *
+	 */
 	private JScrollPane scrollPane;
+	/**
+	 *
+	 */
 	private JPanel pnlSearch;
+	/**
+	 *
+	 */
 	private JButton btnReserve;
 	
 	private JPanel pnlAdd, pnlAddStaff, pnlStaffUpdate;
@@ -116,7 +152,7 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		btnAdd = new JButton("Add Parking Lot");
 		btnAdd.addActionListener(this);
 
-		btnUpdate = new JButton("Update Info");
+		btnUpdate = new JButton("Update Staff Info");
 		btnUpdate.addActionListener(this);
 
 		pnlButtons.add(btnList);
@@ -289,7 +325,6 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 			pnlContent.add(pnlAddStaff);
 			pnlContent.revalidate();
 			this.repaint();
-			//txfFieldStaff
 
 		} else if (e.getSource() == btnUpdate){
 			pnlContent.removeAll();
@@ -300,9 +335,11 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 		} else if (e.getSource() == btnUpdateStaff) {
 			try {
 				dbStaff.update_staff_license(Integer.parseInt(txfFieldUpdate[0].getText()), txfFieldUpdate[2].getText());
+				dbStaff.update_staff_extension(Integer.parseInt(txfFieldUpdate[0].getText()), Integer.parseInt(txfFieldUpdate[1].getText()));
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+			JOptionPane.showMessageDialog(null, "Staff Updated!");
 		}
 		else if (e.getSource() == btnReserve) {
 				Space_Booking reserveSpace = new Space_Booking(Integer.parseInt(txfField[0].getText()), txfField[1].getText(), Date.valueOf(LocalDate.now()), Integer.parseInt(txfField[3].getText()), Integer.parseInt(txfField[4].getText()), txfField[5].getText());
@@ -353,7 +390,6 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 			for (int i=0; i<txfField.length; i++) {
 				txfField[i].setText("");
 			}
-
 		}
 	}
 
@@ -362,14 +398,12 @@ public class Parking_LotGUI extends JFrame implements ActionListener, TableModel
 	 */
 	@Override
 	public void tableChanged(TableModelEvent e) {
-		System.out.println("------------------");
 		int row = e.getFirstRow();
         int column = e.getColumn();
         System.out.println(column);
         TableModel model = (TableModel)e.getSource();
         String columnName = model.getColumnName(column);
         Object data = model.getValueAt(row, column);
-
 	}
 
 }

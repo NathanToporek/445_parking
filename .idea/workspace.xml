@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbfaedd8-92b8-4c48-892c-a21d7d16875f" name="Default" comment="Merge branch 'master' of https://github.com/NathanToporek/445_parking&#10;&#10;# Conflicts:&#10;#&#9;src/table_types/Parking_Slot.java&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/complexqueries/API" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/complexqueries/Complex_Queries.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/445_parking/backend/Staff_DB.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/445_parking/gui/Parking_LotGUI.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/445_parking/tests/testing.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/docs/docs.pdf" afterPath="$PROJECT_DIR$/docs/schema.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/backend/Parking_Slot_DB.class" afterPath="$PROJECT_DIR$/out/production/445_parking/backend/Parking_Slot_DB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/backend/Space_Booking_DB.class" afterPath="$PROJECT_DIR$/out/production/445_parking/backend/Space_Booking_DB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/backend/Staff_Space_DB.class" afterPath="$PROJECT_DIR$/out/production/445_parking/backend/Staff_Space_DB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/table_types/Parking_Lot.class" afterPath="$PROJECT_DIR$/out/production/445_parking/table_types/Parking_Lot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/table_types/Parking_Slot.class" afterPath="$PROJECT_DIR$/out/production/445_parking/table_types/Parking_Slot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/table_types/Space_Booking.class" afterPath="$PROJECT_DIR$/out/production/445_parking/table_types/Space_Booking.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/table_types/Staff.class" afterPath="$PROJECT_DIR$/out/production/445_parking/table_types/Staff.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/table_types/Staff_Space.class" afterPath="$PROJECT_DIR$/out/production/445_parking/table_types/Staff_Space.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/445_parking/gui/Parking_LotGUI.class" afterPath="$PROJECT_DIR$/out/production/445_parking/gui/Parking_LotGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Parking_Slot_DB.java" afterPath="$PROJECT_DIR$/src/backend/Parking_Slot_DB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Space_Booking_DB.java" afterPath="$PROJECT_DIR$/src/backend/Space_Booking_DB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Staff_DB.java" afterPath="$PROJECT_DIR$/src/backend/Staff_DB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backend/Staff_Space_DB.java" afterPath="$PROJECT_DIR$/src/backend/Staff_Space_DB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/Parking_LotGUI.java" afterPath="$PROJECT_DIR$/src/gui/Parking_LotGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/table_types/Parking_Lot.java" afterPath="$PROJECT_DIR$/src/table_types/Parking_Lot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/table_types/Parking_Slot.java" afterPath="$PROJECT_DIR$/src/table_types/Parking_Slot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/table_types/Space_Booking.java" afterPath="$PROJECT_DIR$/src/table_types/Space_Booking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/table_types/Staff.java" afterPath="$PROJECT_DIR$/src/table_types/Staff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/table_types/Staff_Space.java" afterPath="$PROJECT_DIR$/src/table_types/Staff_Space.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/testing.java" afterPath="$PROJECT_DIR$/src/tests/testing.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +28,8 @@
       <file leaf-file-name="Parking_LotGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/Parking_LotGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="648">
+              <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -62,8 +38,8 @@
       <file leaf-file-name="Complex_Queries.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/complexqueries/Complex_Queries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3456">
-              <caret line="201" column="9" lean-forward="true" selection-start-line="201" selection-start-column="9" selection-end-line="201" selection-end-column="9" />
+            <state relative-caret-position="888">
+              <caret line="201" column="8" lean-forward="true" selection-start-line="201" selection-start-column="8" selection-end-line="201" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -91,16 +67,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parking_Slot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/table_types/Parking_Slot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="testing.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/testing.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,8 +80,8 @@
       <file leaf-file-name="Staff_DB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/backend/Staff_DB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2196">
-              <caret line="128" column="42" lean-forward="false" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+            <state relative-caret-position="540">
+              <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -228,6 +194,74 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="table_types" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="445_parking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -799,14 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/complexqueries/Complex_Queries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3456">
-          <caret line="201" column="9" lean-forward="true" selection-start-line="201" selection-start-column="9" selection-end-line="201" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/table_types/Staff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -815,18 +841,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/complexqueries/Complex_Queries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="888">
+          <caret line="201" column="8" lean-forward="true" selection-start-line="201" selection-start-column="8" selection-end-line="201" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Integer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/backend/Staff_DB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2196">
-          <caret line="128" column="42" lean-forward="false" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+        <state relative-caret-position="540">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/Parking_LotGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        <state relative-caret-position="648">
+          <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
           <folding />
         </state>
       </provider>
