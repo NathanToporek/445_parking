@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import table_types.Staff;
 import table_types.Staff_Space;
 /**
  * Class to handle connections to the STAFF_SPACE relation in this database.
@@ -88,6 +89,34 @@ public class Staff_Space_DB extends BasicDB {
 		}
 		return filtered;
 	}
+
+	/**
+	 * Queries the DB by primary key values
+	 * @param slotNo The slot number for the staff booking
+	 * @param staffID The Staff Id of the staff booking.
+	 * @param lotName The lot name of the staff booking.
+	 * @return A list of (hopefully) size 1 containing a matching Staff_Space object.
+	 */
+	public static ArrayList<Staff_Space> by_primary_key(int slotNo, int staffID, String lotName) {
+		ArrayList<Staff_Space> all = null;
+		try {
+			all = get_staff_spaces();
+		} catch(SQLException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		ArrayList<Staff_Space> filtered = new ArrayList<Staff_Space>();
+
+		for(Staff_Space space : all) {
+			if(space.getStaffId() == staffID &&
+			   space.getParkingSlotNo() == slotNo &&
+			   space.getLotName().equals(lotName))
+			{
+				filtered.add(space);
+			}
+		}
+		return filtered;
+	}
 	/**
 	 * Adds a space to this database.
 	 * @param space The space to be added to our relation.
@@ -113,27 +142,3 @@ public class Staff_Space_DB extends BasicDB {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

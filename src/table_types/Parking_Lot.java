@@ -10,17 +10,29 @@ public class Parking_Lot {
 	private int capacity;
 	private int floors;
 	private float monthlyRate;
-	
+
 	/**
-	 * Constructor for Parking lot Structure 
-	 * 
-	 * @param lotName
-	 * @param location
-	 * @param capacity
-	 * @param floors
-	 * @param monthlyRate
+	 * Constructor for a parking lot, not a physical one, though. Computers aren't that advanced.
+	 * @param lotName The name of this lot.
+	 * @param location The lovation of this lot
+	 * @param capacity The capacity of this lot.
+	 * @param floors The number of floors of this lot
+	 * @param monthlyRate The monthly rate for this lot.
+	 * @throws NullPointerException If lotName == null || location == null
+	 * @throws IllegalArgumentException If capacity <= 0 || floors < 0 || monthlyRate < 0
 	 */
-	public Parking_Lot(String lotName, String location, int capacity, int floors, float monthlyRate) {
+	public Parking_Lot(String lotName, String location, int capacity, int floors, float monthlyRate)
+		throws NullPointerException, IllegalArgumentException
+	{
+		if(lotName == null || location == null) {
+			throw new NullPointerException("STOP GIVING ME EMPTY STRINGS YOU DUMB.");
+		}
+		if(capacity < 0 || floors < 0 || monthlyRate <= 0) {
+			throw new IllegalArgumentException("Negative Values aren't cool, yo.");
+		}
+		if(capacity == 0) {
+			throw new IllegalArgumentException("YOU CAN'T HAVE AN EMPTY LOT.");
+		}
 		this.lotName = lotName;
 		this.location = location;
 		this.capacity = capacity;
@@ -28,17 +40,10 @@ public class Parking_Lot {
 		this.monthlyRate = monthlyRate;
 	}
 	/**
-	 * @return
+	 * @return this.lotName
 	 */
 	public String getLotName() {
 		return lotName;
-	}
-
-	/**
-	 * @param lotName
-	 */
-	public void setLotName(String lotName) {
-		this.lotName = lotName;
 	}
 
 	/**
@@ -51,26 +56,12 @@ public class Parking_Lot {
 	}
 
 	/**
-	 * @param location
-	 */
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	/**
 	 * Get the capacity for the lot.
 	 * 
 	 * @return
 	 */
 	public int getCapacity() {
 		return capacity;
-	}
-
-	/**
-	 * @param capacity
-	 */
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
 	}
 
 	/**
@@ -81,26 +72,12 @@ public class Parking_Lot {
 	}
 
 	/**
-	 * @param floors
-	 */
-	public void setFloors(int floors) {
-		this.floors = floors;
-	}
-
-	/**
 	 * @return
 	 */
 	public float getMonthlyRate() {
 		return monthlyRate;
 	}
 
-	/**
-	 * @param monthlyRate
-	 */
-	public void setMonthlyRate(float monthlyRate) {
-		this.monthlyRate = monthlyRate;
-	}
-	
 	@Override
 	public String toString()
 	{

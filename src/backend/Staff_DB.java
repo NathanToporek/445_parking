@@ -31,8 +31,8 @@ public class Staff_DB extends BasicDB {
 			ResultSet r = s.executeQuery(quer);
 			while(r.next()) {
 				staff.add(new Staff(r.getInt("Staff_ID"),
-									r.getInt("Phone_Extension"),
 									r.getString("Staff_Name"),
+									r.getInt("Phone_Extension"),
 									r.getString("License_Plate_No")));
 			}
 		} catch(SQLException e) {
@@ -93,20 +93,14 @@ public class Staff_DB extends BasicDB {
 	}
 	/**
 	 * Updates the phone extension of the staff member you're tracking
-	 * @param row The row in the table of staff members that you want to update. 
+	 * @param id The id of the staff member that you want to update.
 	 * @param ext The new extension of the staff member.
 	 */
-	public static void update_staff_extension(int row, int ext) throws SQLException {
-		int id = -1;
+	public static void update_staff_extension(int id, int ext) throws SQLException {
 		if(conn == null) {
 			create_connection();
 		}
-		try {
-			id = get_staff().get(row).getStaffId();
-		} catch(SQLException e) {
-			System.out.println(e);
-			e.printStackTrace();
-		}
+
 		String quer = "UPDATE " + username + ".STAFF SET Phone_Extension= ? "
 					+ "WHERE Staff_ID = ?;";
 		System.out.println(quer);
@@ -123,19 +117,13 @@ public class Staff_DB extends BasicDB {
 	}
 	/**
 	 * Updates the License plate # of the staff member you're tracking.
-	 * @param row The row in the table of Staff members you're going to edit.
+	 * @param id The id of the staff member that you want to update.
 	 * @param lic Their new license plate number.
 	 */
-	public void update_staff_license(int row, String lic) throws SQLException {
-		int id = -1;
+	public void update_staff_license(int id, String lic) throws SQLException {
+
 		if(conn == null) {
 			create_connection();
-		}
-		try {
-			id = get_staff().get(row).getStaffId();
-		} catch(SQLException e) {
-			System.out.println(e);
-			e.printStackTrace();
 		}
 		String quer = "UPDATE " + username + ".STAFF SET License_Plate_No= ? "
 					+ "WHERE Staff_ID = ?;";

@@ -1,0 +1,36 @@
+ArrayList<Parking_Slot> available_slots_by_lot_name(String lotName)
+    Throws NullPointerException if lotName == NULL
+
+    Returns a list of all the parking slots with a given lotName, this will remove reserved
+    slots from the list.
+
+void generate_lot(int covered, int uncovered, int floors, String lotName, String location)
+    Throws IllegalArgumentException if covered < 0 || uncovered < 0
+    Or if construction of that parking lot fails.
+
+    Will generate a new parking lot and all of the associated slots with it.
+
+void reserve_for_staff(Staff_Space space)
+    Throws NullPointerException if space == NULL
+    Throws IllegalArgumentException if space.lot_name does not exist
+    Throws IllegalArgumentException if space.slot_no is already reserved or does not exist
+    Throws IllegalArgumentException if space.staff_ID does not exist in STAFF
+    Throws IllegalArgumentException if the slot isn't covered.
+
+    Will reserve slot for the staff member with staff_ID and create an entry in STAFF_SPACE
+    for them.
+
+void reserve_for_guest(Space_Booking booking)
+    Throws LimitExceededException if the company has already reserved 20 slots for visitors.
+    Throws NullPointerException if booking == NULL
+    Throws IllegalArgumentException if booking.date.toInstant().isBefore(Instant.now())
+    Throws IllegalArgumentException if booking.lot_name does not exist in PARKING_LOT
+    Throws IllegalArgumentException if booking.slot_no, bookind.lot_name
+        is already reserved or does not exist in PARKING_SLOT.
+    Throws IllegalArgumentException if booking.staff_ID does not exist in STAFF
+    Throws IllegalArgumentException if the slot isn't covered.
+
+    Will make a guest reservation for a guest given a Space_Booking object.
+
+
+
