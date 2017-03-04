@@ -15,9 +15,9 @@ public class BasicDB {
 	private static String password = "shaybkuo";
 	private static String server_name = "cssgate.insttech.washington.edu";
 	/** Stores the username for this project */
-	protected static String username = "nat96";
+	public static String username = "nat96";
 	/** Stores connection information for a DB object. */
-	protected static Connection conn;
+	public static Connection conn;
 	/**
 	 * Tries to connect to the MYSQL Database using the creds above.
 	 * @throws SQLException if ur dum

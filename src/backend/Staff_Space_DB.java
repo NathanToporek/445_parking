@@ -32,8 +32,8 @@ public class Staff_Space_DB extends BasicDB {
 			s = conn.createStatement();
 			ResultSet r = s.executeQuery(quer);
 			while(r.next()) {
-				spaces.add(new Staff_Space(r.getInt("Slot_No"),
-										   r.getInt("Staff_ID"),
+				spaces.add(new Staff_Space(r.getInt("Staff_ID"),
+										   r.getInt("Slot_No"),
 										   r.getString("Lot_Name")));
 			}
 		} catch(SQLException e) {
@@ -132,13 +132,10 @@ public class Staff_Space_DB extends BasicDB {
 		String quer = "INSERT INTO " + username + ".STAFF_SPACE VALUES " 
 					+ "(?, ?, ?);";
 		PreparedStatement ps = null;
-		try {
-			ps = conn.prepareStatement(quer);
-			ps.setInt(1, space.getParkingSlotNo());
-			ps.setInt(2,  space.getStaffId());
-			ps.setString(3, space.getLotName());
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
+		ps = conn.prepareStatement(quer);
+		ps.setInt(1, space.getParkingSlotNo());
+		ps.setString(2, space.getLotName());
+		ps.setInt(3,  space.getStaffId());
+		ps.executeUpdate();
 	}
 }

@@ -27,7 +27,7 @@ public class Parking_Lot {
 		if(lotName == null || location == null) {
 			throw new NullPointerException("STOP GIVING ME EMPTY STRINGS YOU DUMB.");
 		}
-		if(capacity < 0 || floors < 0 || monthlyRate <= 0) {
+		if(capacity < 0 || floors < 0 || monthlyRate < 0) {
 			throw new IllegalArgumentException("Negative Values aren't cool, yo.");
 		}
 		if(capacity == 0) {

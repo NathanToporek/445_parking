@@ -115,21 +115,15 @@ public class Space_Booking_DB extends BasicDB {
 		if(conn == null) {
 			create_connection();
 		}
-		String quer = "INSERT INTO " + username + ".SPACE_BOOKING "
-					+ "VALUES (?, ?, ?, ?, ?, ?);";
+		String quer = "INSERT INTO " + username + ".SPACE_BOOKING (Visitor_License, Date_of_Visit, Staff_ID, Slot_No, Lot_Name) "
+					+ " VALUES (?, ?, ?, ?, ?);";
 		PreparedStatement ps = null;
-		try {
-			ps = conn.prepareStatement(quer);
-			ps.setInt(1, booking.getBookingId());
-			ps.setString(2, booking.getVisitorLisence());
-			ps.setDate(3, booking.getDateOfVisit());
-			ps.setInt(4, booking.getStaffId());
-			ps.setInt(5, booking.getParkingSlotNo());
-			ps.setString(6, booking.getLotName());
-			ps.executeUpdate();
-		} catch(SQLException e) {
-			System.out.println(e);
-			e.printStackTrace();
-		}
+		ps = conn.prepareStatement(quer);
+		ps.setString(1, booking.getVisitorLisence());
+		ps.setDate(2, booking.getDateOfVisit());
+		ps.setInt(3, booking.getStaffId());
+		ps.setInt(4, booking.getParkingSlotNo());
+		ps.setString(5, booking.getLotName());
+		ps.executeUpdate();
 	}
 }

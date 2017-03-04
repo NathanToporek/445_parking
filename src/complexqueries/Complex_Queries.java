@@ -5,11 +5,16 @@ import table_types.*;
 
 import javax.naming.LimitExceededException;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import static backend.BasicDB.create_connection;
+import static backend.BasicDB.username;
 
 /**
  * Class to handle queries that need to span multiple relations.
@@ -26,38 +31,38 @@ public class Complex_Queries {
      * @throws NullPointerException if lotName == null
      */
     public static ArrayList<Parking_Slot> available_slots_by_lot_name(String lotName)
-        throws NullPointerException
+        throws NullPointerException, SQLException
     {
-        if(lotName == null) {
-            throw new NullPointerException("I CAN'T SEARCH FOR WHAT I DON'T HAVE.");
+        if(BasicDB.conn == null) {
+            BasicDB.create_connection();
         }
-        ArrayList<Parking_Slot> all = null; // For all slots in the lot.
-        ArrayList<Space_Booking> visitors = null; // For all visitor reservations.
-        ArrayList<Staff_Space> staff = null; // For all slots reserved for staff.
-        // Try to populate our lists.
-        try {
-            all = Parking_Slot_DB.by_lot_name(lotName);
-            visitors = Space_Booking_DB.by_lot_name(lotName);
-            staff = Staff_Space_DB.by_lot_name(lotName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // Get all of the reserved slots.
-        HashSet<Integer> reserved = new HashSet<>();
-        for(Space_Booking booking : visitors) {
-            reserved.add(booking.getParkingSlotNo());
-        }
-        for(Staff_Space s : staff) {
-            reserved.add(s.getParkingSlotNo());
-        }
-        // Get all of the available slots.
-        ArrayList<Parking_Slot> available = new ArrayList<Parking_Slot>();
-        for(Parking_Slot slot : all) {
-            if(!reserved.contains(slot.getSlotNo())) {
-                available.add(slot);
+        ArrayList<Parking_Slot> not_available = new ArrayList<Parking_Slot>();
+        for(Staff_Space ss : Staff_Space_DB.get_staff_spaces()) {
+            if(Parking_Slot_DB.by_primary_key(ss.getLotName(), ss.getParkingSlotNo()).size() > 0) {
+                not_available.add(Parking_Slot_DB.by_primary_key(ss.getLotName(), ss.getParkingSlotNo()).get(0));
             }
         }
-        return available;
+        for(Space_Booking sb : Space_Booking_DB.get_bookings()) {
+            if (sb.getDateOfVisit().equals(new Date(Instant.now().toEpochMilli()))
+                    && Parking_Slot_DB.by_primary_key(sb.getLotName(), sb.getParkingSlotNo()).size() > 0) {
+                not_available.add(Parking_Slot_DB.by_primary_key(sb.getLotName(), sb.getParkingSlotNo()).get(0));
+            }
+        }
+        HashSet<Parking_Slot> available = new HashSet<Parking_Slot>();
+        for(Parking_Slot p : Parking_Slot_DB.by_lot_name(lotName)) {
+            if(not_available.size() > 0) {
+                for (Parking_Slot na : not_available) {
+                    if (!not_available.contains(p)) {
+                        available.add(p);
+                    }
+                }
+            } else {
+                available.add(p);
+            }
+        }
+        ArrayList<Parking_Slot> res = new ArrayList<Parking_Slot>(available);
+        Collections.sort(res);
+        return res;
     }
 
     /**
@@ -134,8 +139,8 @@ public class Complex_Queries {
             throw new IllegalArgumentException("Space is reserved for a visitor today.");
         }
         // If the slot is covered.
-        if(Parking_Slot_DB.by_primary_key(space.getLotName(), space.getParkingSlotNo()).get(0).isCovered()) {
-            throw new IllegalArgumentException("Space is covered u idiot.");
+        if(!Parking_Slot_DB.by_primary_key(space.getLotName(), space.getParkingSlotNo()).get(0).isCovered()) {
+            throw new IllegalArgumentException("Space is uncovered u idiot.");
         }
         // Now that we've successfully confirmed that the user is indeed NOT retarded, we can make a
         // staff reservation.
@@ -154,7 +159,7 @@ public class Complex_Queries {
      * @throws IllegalArgumentException If things are wrong with the DB.
      */
     public static void reserve_for_guest(Space_Booking booking)
-        throws LimitExceededException, NullPointerException, IllegalArgumentException
+        throws LimitExceededException, NullPointerException, IllegalArgumentException, SQLException
     {
         // If we've already had 20 vistor reservations.
         ArrayList<Space_Booking> bookings = new ArrayList<Space_Booking>();
@@ -201,14 +206,10 @@ public class Complex_Queries {
             throw new IllegalArgumentException("Space is reserved for a visitor today.");
         }
         // If the slot is covered.
-        if(Parking_Slot_DB.by_primary_key(booking.getLotName(), booking.getParkingSlotNo()).get(0).isCovered()) {
-            throw new IllegalArgumentException("Space is covered u idiot.");
+        if(!Parking_Slot_DB.by_primary_key(booking.getLotName(), booking.getParkingSlotNo()).get(0).isCovered()) {
+            throw new IllegalArgumentException("Space is uncovered u idiot.");
         }
         // Now that we know that everything is good and right in our world, we make a reservation.
-        try {
-            Space_Booking_DB.add_space_booking(booking);
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
+        Space_Booking_DB.add_space_booking(booking);
     }
 }

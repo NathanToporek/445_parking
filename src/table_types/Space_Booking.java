@@ -45,6 +45,23 @@ public class Space_Booking {
 		this.parkingSlotNo = parkingSlotNo;
 		this.lotName = lotName;
 	}
+	public Space_Booking(String visitorLisence, Date dateOfVisit,
+						 int staffId, int parkingSlotNo, String lotName)
+		throws NullPointerException, IllegalArgumentException
+	{
+		if(parkingSlotNo < 0 || staffId < 0) {
+			throw new IllegalArgumentException("I don't like negatives.");
+		}
+		if(visitorLisence == null || lotName == null || dateOfVisit == null) {
+			throw new NullPointerException("I don't like NULLs either.");
+		}
+		this.bookingId = -1;
+		this.visitorLisence = visitorLisence;
+		this.dateOfVisit = dateOfVisit;
+		this.staffId = staffId;
+		this.parkingSlotNo = parkingSlotNo;
+		this.lotName = lotName;
+	}
 	/**
 	 * @return the bookingId
 	 */

@@ -7,7 +7,7 @@ package table_types;
  * @author Charlton Smith, Nathanael Toporek
  * @version 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
  */
-public class Parking_Slot {
+public class Parking_Slot implements  Comparable{
 	/**
 	 * This slots Slot Number
 	 */
@@ -60,5 +60,27 @@ public class Parking_Slot {
 	public boolean isCovered() {
 		return isCovered;
 	}
+	@Override
+	public boolean equals(Object o) {
 
+		if(o.getClass() == this.getClass()) {
+			Parking_Slot other = (Parking_Slot) o;
+			if(this.isCovered == other.isCovered
+			&& this.parkingLotName.compareToIgnoreCase(other.parkingLotName) == 0
+			&& this.slotNo == other.slotNo)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int compareTo(Object o) {
+		if(o.getClass() == this.getClass()) {
+			Parking_Slot other = (Parking_Slot) o;
+
+			return this.slotNo - other.slotNo;
+		}
+		return -10000000;
+	}
 }

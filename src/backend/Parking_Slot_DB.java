@@ -63,11 +63,13 @@ public class Parking_Slot_DB extends BasicDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println(String.format("%s, %d", lot_name, slot_no));
 		ArrayList<Parking_Slot> filtered = new ArrayList<Parking_Slot>();
 		for(Parking_Slot slot : unfiltered) {
 			if(slot.getParkingLotName().compareToIgnoreCase(lot_name) == 0
 					&& slot.getSlotNo() == slot_no)
 			{
+				System.out.println("FOUND MATCH");
 				filtered.add(slot);
 			}
 		}
@@ -87,7 +89,7 @@ public class Parking_Slot_DB extends BasicDB {
 		}
 		ArrayList<Parking_Slot> filtered = new ArrayList<Parking_Slot>();
 		for(Parking_Slot slot : unfiltered) {
-			if(slot.getParkingLotName().compareToIgnoreCase(lot_name) == 0) {
+			if(slot.getParkingLotName().compareToIgnoreCase(lot_name) == 0 && slot.isCovered()) {
 				filtered.add(slot);
 			}
 		}
